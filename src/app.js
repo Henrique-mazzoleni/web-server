@@ -48,14 +48,17 @@ app.get("/weather", (req, res) => {
     return res.send({ error: "You must provide a location" });
   geocode(req.query.search, (error, { latitude, longitude, location } = {}) => {
     if (error) return res.send({ error });
-    forecast({ latitude, longitude }, (error, { forecast }) => {
-      if (error) return res.send({ error });
-      res.send({
-        forecast,
-        location,
-        address: req.query.search,
-      });
-    });
+    forecast(
+      { latitude, longitude },
+      (error, { forecast, temperature, feelsLike } = {}) => {
+        if (error) return res.send({ error });
+        res.send({
+          forecast: `${forecast}. It is ${temperature} degrees but it feels like ${feelsLike} degrees.`,
+          location,
+          address: req.query.search,
+        });
+      }
+    );
   });
 });
 
