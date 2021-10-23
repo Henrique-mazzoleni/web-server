@@ -41,6 +41,18 @@ app.get("/help", (req, res) => {
   });
 });
 
+app.get("/weather", (req, res) => {
+  if (!req.query.search) {
+    return res.send({
+      error: "You must provide a location",
+    });
+  }
+  res.send({
+    forecast: "Who knows",
+    location: req.query.search,
+  });
+});
+
 app.get("/help/*", (req, res) => {
   res.render("404", {
     title: "404",
