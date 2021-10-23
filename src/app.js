@@ -41,10 +41,21 @@ app.get("/help", (req, res) => {
   });
 });
 
-app.get("/weather", (req, res) => {
-  res.send({
-    forecast: "cloudy",
-    location: "Berlin",
+app.get("/help/*", (req, res) => {
+  res.render("404", {
+    title: "404",
+    h1: "404",
+    message: "Help article not found",
+    name: "The Mazz",
+  });
+});
+
+app.get("*", (req, res) => {
+  res.render("404", {
+    title: "404",
+    h1: "404",
+    message: "Page not found",
+    name: "Mazzimo",
   });
 });
 
