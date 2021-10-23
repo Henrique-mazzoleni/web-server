@@ -4,10 +4,18 @@ body {
   max-width: 650px;
   margin: 0 auto;
   padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-content: space-between;
+}
+
+.main-content {
+  flex-grow: 1;
 }
 
 footer {
-  color: #888
+  color: #888;
   border-top: 1px solid #eee;
   margin-top: 16px;
   padding: 16px 0;
@@ -27,4 +35,8 @@ header a {
   color: #888;
   margin-right: 16px;
   text-decoration: none;
+}
+
+.portrait {
+  width: 250px;
 }
