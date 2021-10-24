@@ -11,7 +11,7 @@ function forecast({ longitude, latitude }, callback) {
       temperature,
       feelslike: feelsLike,
       humidity,
-      windSpeed: wind_speed,
+      wind_speed: windSpeed,
     } = body.current;
     if (error) {
       callback("Unable to connect to weather service", undefined);
