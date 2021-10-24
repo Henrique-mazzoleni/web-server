@@ -52,10 +52,13 @@ app.get("/weather", (req, res) => {
     if (error) return res.send({ error });
     forecast(
       { latitude, longitude },
-      (error, { forecast, temperature, feelsLike } = {}) => {
+      (
+        error,
+        { forecast, temperature, feelsLike, humidity, windSpeed } = {}
+      ) => {
         if (error) return res.send({ error });
         res.send({
-          forecast: `${forecast}. It is ${temperature} degrees but it feels like ${feelsLike} degrees.`,
+          forecast: `${forecast}. It is ${temperature} degrees and with a humidity of ${humidity}% and wind speed of ${windSpeed}km/h it feels like ${feelsLike} degrees.`,
           location,
           address: req.query.search,
         });

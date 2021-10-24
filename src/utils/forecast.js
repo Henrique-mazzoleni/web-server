@@ -10,6 +10,8 @@ function forecast({ longitude, latitude }, callback) {
       weather_descriptions: forecast,
       temperature,
       feelslike: feelsLike,
+      humidity,
+      windSpeed: wind_speed,
     } = body.current;
     if (error) {
       callback("Unable to connect to weather service", undefined);
@@ -20,6 +22,8 @@ function forecast({ longitude, latitude }, callback) {
         forecast: forecast[0],
         temperature,
         feelsLike,
+        humidity,
+        windSpeed,
       });
     }
   });
